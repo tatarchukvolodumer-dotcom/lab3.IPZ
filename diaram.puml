@@ -1,0 +1,143 @@
+@startuml
+' Main classes
+class work3.Main {
+  + {static} void main(String[])
+}
+
+' TEXT package (Decorator)
+class work3.text.TextElement {
+  - String text
+  + String getText()
+  + void display()
+}
+
+interface work3.text.TextComponent {
+  ~ String getText()
+  ~ void display()
+  ~ String getDescription()
+}
+
+class work3.text.TextElementAdapter {
+  - TextElement adaptee
+  + String getText()
+  + void display()
+  + String getDescription()
+}
+
+abstract class work3.text.BaseDecorator {
+  # TextComponent component
+  + String getText()
+  + void display()
+  + String getDescription()
+}
+
+class work3.text.UppercaseDecorator {
+  + String getText()
+  + void display()
+  + String getDescription()
+}
+
+class work3.text.LowercaseDecorator {
+  + String getText()
+  + void display()
+  + String getDescription()
+}
+
+class work3.text.NewlineDecorator {
+  - String newline
+  + String getText()
+  + void display()
+  + String getDescription()
+}
+
+class work3.text.TextDemo {
+  + {static} void main(String[])
+}
+
+' GUI package (Bridge)
+interface work3.gui.GUIRenderer {
+  ~ void render(String,String,int,int,int,int)
+}
+
+class work3.gui.QtRenderer {
+  + void render(String,String,int,int,int,int)
+}
+
+class work3.gui.GtkRenderer {
+  + void render(String,String,int,int,int,int)
+}
+
+abstract class work3.gui.GUIElement {
+  # GUIRenderer renderer
+  # int x
+  # String text
+  + {abstract} void draw()
+  + {abstract} String getDescription()
+  + void setPosition(int,int)
+  + void setSize(int,int)
+  + void setText(String)
+}
+
+class work3.gui.Button {
+  + void draw()
+  + String getDescription()
+  + void click()
+}
+
+class work3.gui.Window {
+  + void draw()
+  + String getDescription()
+  + void save()
+}
+
+class work3.gui.Checkbox {
+  - boolean checked
+  + void draw()
+  + String getDescription()
+  + void toggle()
+}
+
+class work3.gui.GuiDemo {
+  + {static} void main(String[])
+}
+
+' Relations: inheritance / implementation
+work3.text.TextComponent <|.. work3.text.TextElementAdapter
+work3.text.TextComponent <|.. work3.text.BaseDecorator
+work3.text.BaseDecorator <|-- work3.text.UppercaseDecorator
+work3.text.BaseDecorator <|-- work3.text.LowercaseDecorator
+work3.text.BaseDecorator <|-- work3.text.NewlineDecorator
+
+work3.gui.GUIRenderer <|.. work3.gui.QtRenderer
+work3.gui.GUIRenderer <|.. work3.gui.GtkRenderer
+work3.gui.GUIElement <|-- work3.gui.Button
+work3.gui.GUIElement <|-- work3.gui.Window
+work3.gui.GUIElement <|-- work3.gui.Checkbox
+
+' Associations / aggregations (clarify roles)
+work3.text.TextElementAdapter --> work3.text.TextElement : adaptee
+work3.text.BaseDecorator *-- work3.text.TextComponent : component
+work3.gui.GUIElement o-- work3.gui.GUIRenderer : renderer
+
+' Notes for clarity (roles in patterns)
+note right of work3.text.TextComponent
+  Component (Decorator pattern)
+end note
+
+note right of work3.text.TextElementAdapter
+  ConcreteComponent / Adapter: adapts existing TextElement
+end note
+
+note left of work3.text.BaseDecorator
+  Decorator (abstract) — contains reference to component
+end note
+
+note right of work3.gui.GUIRenderer
+  Implementor (Bridge)
+end note
+
+note right of work3.gui.GUIElement
+  Abstraction (Bridge) — delegates to GUIRenderer
+end note
+
+@enduml
