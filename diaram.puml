@@ -1,10 +1,10 @@
 @startuml
-' Main classes
+' Main class
 class work3.Main {
   + {static} void main(String[])
 }
 
-' TEXT package (Decorator)
+' ===== TEXT package (Decorator + Adapter) =====
 class work3.text.TextElement {
   - String text
   + String getText()
@@ -54,7 +54,7 @@ class work3.text.TextDemo {
   + {static} void main(String[])
 }
 
-' GUI package (Bridge)
+' ===== GUI package (Bridge) =====
 interface work3.gui.GUIRenderer {
   ~ void render(String,String,int,int,int,int)
 }
@@ -101,7 +101,7 @@ class work3.gui.GuiDemo {
   + {static} void main(String[])
 }
 
-' Relations: inheritance / implementation
+' ===== Relations: inheritance / implementation =====
 work3.text.TextComponent <|.. work3.text.TextElementAdapter
 work3.text.TextComponent <|.. work3.text.BaseDecorator
 work3.text.BaseDecorator <|-- work3.text.UppercaseDecorator
@@ -114,30 +114,65 @@ work3.gui.GUIElement <|-- work3.gui.Button
 work3.gui.GUIElement <|-- work3.gui.Window
 work3.gui.GUIElement <|-- work3.gui.Checkbox
 
-' Associations / aggregations (clarify roles)
+' ===== Associations / aggregations =====
 work3.text.TextElementAdapter --> work3.text.TextElement : adaptee
-work3.text.BaseDecorator *-- work3.text.TextComponent : component
+work3.text.BaseDecorator o-- work3.text.TextComponent : component
 work3.gui.GUIElement o-- work3.gui.GUIRenderer : renderer
 
-' Notes for clarity (roles in patterns)
+' ===== Notes (roles in patterns) =====
+note right of work3.text.TextElement
+  Adaptee
+end note
+
 note right of work3.text.TextComponent
-  Component (Decorator pattern)
+  Component
 end note
 
 note right of work3.text.TextElementAdapter
-  ConcreteComponent / Adapter: adapts existing TextElement
+  Adapter
 end note
 
 note left of work3.text.BaseDecorator
-  Decorator (abstract) — contains reference to component
+  Abstract Decorator
+end note
+
+note right of work3.text.UppercaseDecorator
+  Concrete Decorator
+end note
+
+note right of work3.text.LowercaseDecorator
+  Concrete Decorator
+end note
+
+note right of work3.text.NewlineDecorator
+  Concrete Decorator
 end note
 
 note right of work3.gui.GUIRenderer
-  Implementor (Bridge)
+  Implementor
+end note
+
+note right of work3.gui.QtRenderer
+  Concrete Implementor
+end note
+
+note right of work3.gui.GtkRenderer
+  Concrete Implementor
 end note
 
 note right of work3.gui.GUIElement
-  Abstraction (Bridge) — delegates to GUIRenderer
+  Abstraction
 end note
 
+note right of work3.gui.Button
+  Refined Abstraction
+end note
+
+note right of work3.gui.Window
+  Refined Abstraction
+end note
+
+note right of work3.gui.Checkbox
+  Refined Abstraction
+end note
 @enduml
