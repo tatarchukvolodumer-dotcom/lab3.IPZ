@@ -4,7 +4,7 @@ package work3.text;
  * TextElementAdapter — адаптер існуючого класу TextElement до інтерфейсу TextComponent.
  * Не змінює TextElement, а делегує йому читання сирого тексту.
  *
- * Учасник шаблону: ConcreteComponent (адаптує існуючий клас).
+ * Учасник шаблону: ConcreteComponent.
  */
 public class TextElementAdapter implements TextComponent {
     /**
@@ -24,7 +24,7 @@ public class TextElementAdapter implements TextComponent {
 
     @Override
     public void display() {
-        // Бізнес-логіка — заглушка згідно вимоги.
+        // Заглушка.
         System.out.println("TextElementAdapter.display(): \"" + getText() + "\"");
     }
 

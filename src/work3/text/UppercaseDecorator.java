@@ -21,7 +21,7 @@ public class UppercaseDecorator extends BaseDecorator {
 
     @Override
     public void display() {
-        // Бізнес-логіка — заглушка: показати що викликано і новий текст.
+        // Заглушкa.
         System.out.println("UppercaseDecorator.display(): результат = \"" + getText() + "\"");
     }
 

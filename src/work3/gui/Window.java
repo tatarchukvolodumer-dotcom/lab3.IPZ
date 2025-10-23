@@ -20,7 +20,7 @@ public class Window extends GUIElement {
     }
 
     /**
-     * Заглушка: зберегти вікно.
+     * Заглушка.
      */
     public void save() {
         System.out.println("Window.save(): збережено вікно \"" + text + "\"");

@@ -28,7 +28,7 @@ public class NewlineDecorator extends BaseDecorator {
 
     @Override
     public void display() {
-        // Виводимо результат як заглушку.
+        // Заглушка.
         System.out.println("NewlineDecorator.display(): результат = \"" + getText() + "\"");
     }
 

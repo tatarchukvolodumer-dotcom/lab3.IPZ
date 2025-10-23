@@ -32,7 +32,7 @@ public class TextDemo {
         nl.display();
         System.out.println("Опис: " + nl.getDescription());
 
-        // 4) Комбінований (Uppercase + Newline)
+        // 4) Комбінований
         System.out.println("\n--- Combined (Uppercase + Newline) ---");
         TextComponent combo = new NewlineDecorator(new UppercaseDecorator(base));
         combo.display();

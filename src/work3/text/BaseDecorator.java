@@ -1,15 +1,15 @@
 package work3.text;
 
 /**
- * BaseDecorator — абстрактний декоратор. Реалізує базову логіку делегування
+ * BaseDecorator — декоратор. Реалізує базову логіку делегування
  * до вкладеного компонента. Конкретні декоратори наслідують цей клас і
  * модифікують поведінку getText/display/getDescription.
  *
- * Учасник шаблону: Decorator (абстрактний).
+ * Учасник шаблону: Decorator.
  */
 public abstract class BaseDecorator implements TextComponent {
     /**
-     * Вкладений компонент (може бути адаптером або іншим декоратором).
+     * Вкладений компонент.
      */
     protected final TextComponent component;
 
@@ -19,19 +19,19 @@ public abstract class BaseDecorator implements TextComponent {
 
     @Override
     public String getText() {
-        // За замовчуванням делегуємо отримання тексту.
+        // Делегуємо отримання тексту.
         return component.getText();
     }
 
     @Override
     public void display() {
-        // За замовчуванням делегуємо відображення.
+        // Делегуємо відображення.
         component.display();
     }
 
     @Override
     public String getDescription() {
-        // За замовчуванням делегуємо опис.
+        // Делегуємо опис.
         return component.getDescription();
     }
 }

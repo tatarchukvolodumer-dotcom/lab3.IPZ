@@ -2,7 +2,7 @@ package work3.gui;
 
 /**
  * GtkRenderer — приклад конкретної реалізації GUIRenderer для GTK.
- * Також заглушка.
+ * Заглушка.
  */
 public class GtkRenderer implements GUIRenderer {
 

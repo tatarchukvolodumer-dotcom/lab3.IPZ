@@ -28,7 +28,7 @@ public abstract class GUIElement {
     public abstract void draw();
 
     /**
-     * Повертає текстовий опис елемента (тип та рендер).
+     * Повертає текстовий опис елемента.
      */
     public abstract String getDescription();
 

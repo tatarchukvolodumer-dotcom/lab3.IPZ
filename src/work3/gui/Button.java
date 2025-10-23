@@ -22,7 +22,7 @@ public class Button extends GUIElement {
     }
 
     /**
-     * Заглушка для обробника натискання.
+     * Заглушка.
      */
     public void click() {
         System.out.println("Button.click(): натиснута кнопка \"" + text + "\"");

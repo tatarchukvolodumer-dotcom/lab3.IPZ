@@ -10,7 +10,7 @@ public class QtRenderer implements GUIRenderer {
 
     @Override
     public void render(String type, String text, int x, int y, int width, int height) {
-        // Заглушка — бізнес-логіка.
+        // Заглушка.
         System.out.println("[Qt] render " + type
                 + " text=\"" + text + "\""
                 + " x=" + x + " y=" + y
